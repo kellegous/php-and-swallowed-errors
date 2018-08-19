@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+    mysql:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: f1ce6e9e083c5d1e4c4f955bb6a9b184ec1469db
+    php:
+        image: richarvey/nginx-php-fpm:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: f1ce6e9e083c5d1e4c4f955bb6a9b184ec1469db
+        volumes: 
+            - ".:/data"
+        working_dir: /data
+        command: "php -S 0.0.0.0:8080"
+        ports:
+            - 8080:8080
+    proxy:
+        image: golang:1.10.3-stretch
+        volumes:
+            - ".:/data"
+        working_dir: /data
+        command: "go run proxy.go --be-addr=mysql:3306"
