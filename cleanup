@@ -1,0 +1,16 @@
+#!/usr/bin/env python2.7
+
+import os
+import subprocess
+import sys
+
+def main():
+    root = os.path.abspath(
+        os.path.dirname(__file__))
+    try:
+        return subprocess.call(['docker-compose', 'down'], cwd=root)
+    except KeyboardInterrupt:
+        return 0
+
+if __name__ == '__main__':
+    sys.exit(main())

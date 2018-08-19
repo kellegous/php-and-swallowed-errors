@@ -1,0 +1,24 @@
+#!/usr/bin/env python2.7
+
+import os
+import subprocess
+import sys
+
+def HasDockerCompose():
+    with open('/dev/null', 'w') as w:
+        return subprocess.call(
+            ['docker-compose', 'version'],
+            stdout=w,
+            stderr=w) == 0
+
+def main():
+    root = os.path.abspath(
+        os.path.dirname(__file__))
+    if not HasDockerCompose():
+        print >> sys.stderr, 'You need to install docker and docker-compose.'
+        return 1
+    os.chdir(root)
+    os.execvp('docker-compose', ['docker-compose', 'up'])
+
+if __name__ == '__main__':
+    sys.exit(main())
