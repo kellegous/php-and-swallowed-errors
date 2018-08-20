@@ -12,7 +12,7 @@
         below, we run a query that should return exactly 10,000 rows. But
         in the middle of returning the results, we use a proxy to forcibly
         sever the connection between PHP and MySQL. In both cases, we should
-        expect an exception to indicate the at the result set was not complete
+        expect an exception to indicate that the result set was not complete
         due to a socket error. As you probably suspect, no such exception occurs
         and PHP returns the wrong number of rows.
 <?php
