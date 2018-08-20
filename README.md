@@ -1,7 +1,7 @@
 # PHP and the case of the swallowed errors
 
 This reproduces a PHP bug that is more fully described in a blog post at
-https://kellegous.com/.
+https://kellegous.com/j/2018/08/20/php-and-swallowed-errors/.
 
 ### Getting Started
 
